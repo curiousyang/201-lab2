@@ -1,12 +1,13 @@
 'use strict';
 
+
 // Get a valid answer for questions:
 function userInput(question){
   var answer = prompt(question);
 
-  while (!(answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'no'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === 'n')){
-    answer = prompt('Answer again with Yes/Y/No/N.');
-  }
+  //while (!(answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'no'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === 'n')){
+  //  answer = prompt('Answer again with Yes/Y/No/N.');
+  //}
   return answer.toLowerCase();
 }
 
