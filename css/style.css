@@ -1,7 +1,7 @@
 * {
    
     text-align: left;
-
+    font-size: 20px;
 }
 
 
@@ -27,8 +27,8 @@ h2{
 
 .question{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:gainsboro;
-    color:rebeccapurple;
+    background-color:black;
+    color:white;
    
 }
 
