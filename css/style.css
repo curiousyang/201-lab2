@@ -1,0 +1,60 @@
+* {
+   
+    text-align: left;
+
+}
+
+
+h1{
+    font-size:3em;
+    color:rgba(255, 0, 55, 0.5);
+    text-align: center;
+
+}
+h2{
+    font-size:2em;
+    color:black;
+    text-align: center;
+}
+
+
+.title{
+    font-size:1.5em;
+    font-family: fantasy;
+    color:rgb(68, 1, 1);
+   
+}
+
+.question{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:gainsboro;
+    color:rebeccapurple;
+   
+}
+
+.answer{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1em;
+    color:black;
+   
+}
+section{
+    width: 100%;
+    border: 1em solid rgb(117, 170, 117);
+    padding: 1em;
+    margin: 1em;
+    text-align: center;
+}
+
+#more{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:1.2em;
+    padding: 1em;
+}
+
+#user{
+  
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
