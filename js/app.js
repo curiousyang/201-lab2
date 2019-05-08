@@ -1,10 +1,18 @@
 'use strict';
 
+// Get a valid answer for questions:
+function userInput(question){
+  var answer = prompt(question);
+
+  while (!(answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'no'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === 'n')){
+    answer = prompt('Answer again with Yes/Y/No/N.');
+  }
+  return answer.toLowerCase();
+}
 
 
 //Q1: Was Yang born in US?
-var bornInUs = prompt('Was Yang born in US?');
-bornInUs = bornInUs.toLowerCase();
+var bornInUs = userInput('Was Yang born in US?');
 var firstResult = 'correct';
 
 if (bornInUs === 'yes' || bornInUs === 'y' ){
@@ -28,8 +36,7 @@ elFirstResult.textContent = firstResult;
 
 
 //Q2: Does Yang make a living as a dog walker?
-var isDogWalker = prompt('Does Yang make a living as a dog walker?');
-isDogWalker = isDogWalker.toLowerCase();
+var isDogWalker = userInput('Does Yang make a living as a dog walker?');
 var secondResult = 'correct';
 
 if (isDogWalker === 'yes' || isDogWalker === 'y'){
@@ -52,8 +59,7 @@ elSecondResult.textContent = secondResult;
 
 
 //Q3: Does Yang have a dgree in Information Systems?
-var degreeInfoSys = prompt('Does Yang have a dgree in Information Systems?');
-degreeInfoSys = degreeInfoSys.toLowerCase();
+var degreeInfoSys = userInput('Does Yang have a dgree in Information Systems?');
 var thirdResult = 'correct';
 
 if (degreeInfoSys === 'yes'|| degreeInfoSys === 'y'){
@@ -77,8 +83,7 @@ elThirdResult.textContent = thirdResult;
 
 
 //Q4: Does Yang like Visual Basics?
-var likesVisualBasics = prompt('Does Yang like Visual Basics?');
-likesVisualBasics = likesVisualBasics.toLowerCase();
+var likesVisualBasics = userInput('Does Yang like Visual Basics?');
 var fourthResult = 'correct';
 
 if (likesVisualBasics === 'yes'|| likesVisualBasics === 'y'){
@@ -102,8 +107,7 @@ elFourthResult.textContent = fourthResult;
 
 
 //Q5: Does Yang want to be a software engineer?
-var beSoftwareEngineer = prompt('Does Yang want to be a software engineer?');
-beSoftwareEngineer = beSoftwareEngineer.toLowerCase();
+var beSoftwareEngineer = userInput('Does Yang want to be a software engineer?');
 var fifthResult = 'correct';
 
 if (beSoftwareEngineer === 'yes'|| beSoftwareEngineer === 'y'){
