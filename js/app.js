@@ -1,128 +1,160 @@
 'use strict';
 
 
-// Get a valid answer for questions:
+/// Get valid answers for questions 1-5 and standardize answers: Y/y=> yes; N/n=> no
 function userInput(question){
+
   var answer = prompt(question);
 
-  //while (!(answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'no'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === 'n')){
-  //  answer = prompt('Answer again with Yes/Y/No/N.');
-  //}
+  //If not valid answer, prompt and allow enter again
+  while (!(answer.toLowerCase() === 'yes' || answer.toLowerCase() === 'no'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === 'n')){
+    answer = prompt('Answer again with Yes/Y/No/N.');
+  }
+  // Y/y => yes
+  if (answer.toLowerCase() ==='y'){
+    answer = 'yes';
+  }
+  // N/n => no
+  if(answer.toLowerCase()==='n'){
+    answer ='no';
+  }
   return answer.toLowerCase();
 }
 
+///Create serveral arrays for questions 1 -7 to store questions, alerts when answer correct, alerts when answer wrong, correct answers, user's answers, results, html id.
+var questionList = ['Was I born in US?','Do I make a living as a dog walker?','Do I have a dgree in Information Systems?','Do I like Visual Basic?','Do I want to be a software engineer?','Guess what is my lucky number from 1 to 10. You have 4 opportunities to guess.','Can you guess a country I visited except for US? You have 6 opportunies to guess.'];
 
-//Q1: Was Yang born in US?
-var bornInUs = userInput('Was Yang born in US?');
-var firstResult = 'correct';
+var alertCorrectList =['You are right! I am a Chinese girl!','You are right! I love dogs but am not a professional dog walker.','Yup. I got a degree in Information Systems about 7 years ago.','You are right! I am not a VB fan and likes JavaScirpt better!','Of course! Software Engineer is an awesome job!','Yes, you are right!','Yup, you guess right!'];
 
-if (bornInUs === 'yes' || bornInUs === 'y' ){
-  alert('Ops. You guess wrong. She is from a far away country.');
-  firstResult = 'wrong';
-}
-else{
-  alert('You are right! Yang is a Chinese girl!');
-}
+var alertWrongList =['Ops. You guess wrong. I am from a far away country.','You guess wrong! I am actually a tax analyst dealing with numbers.','Wrong answer! I am smarter than you think :)','You guess wrong. I do like VB becuase the language is too outdated!','Wrong! I want to be a software engineer and is working on that:)','Wrong answer!','Wrong guess!'];
 
-console.log('For the question: "Was Yang born in US?" => User answer is ' + bornInUs + '.');
+var randomNumber = Math.floor(1 + Math.random()*10);
+var correctAnswerList = ['no','no','yes','no','yes',randomNumber,['japan','china','canada']];
+var userAnswerList = new Array(7);
+var resultList =new Array(7);
 
-var elFirstAnswer = document.getElementById('answer1');
-elFirstAnswer.textContent = bornInUs;
+var htmlAnswerId =['answer1','answer2','answer3','answer4','answer5','answer6','answer7'];
+var htmlResultId =['result1','result2','result3','result4','result5','result6','result7'];
 
-var elFirstResult = document.getElementById('result1');
-elFirstResult.textContent = firstResult;
+///for Question 1 to Question 5:
 
+for (var i = 0; i<5; i++){
 
+  userAnswerList[i] = userInput(questionList[i]);
 
+  if (userAnswerList[i] === correctAnswerList[i]){
+    alert(alertCorrectList[i]);
+    resultList[i] = 'correct';
+  }
+  else{
+    alert(alertWrongList[i]);
+    resultList [i] = 'wrong';
+  }
 
+  console.log('For the question: ' + questionList[i] + ' => User answer is ' + userAnswerList[i] + '.');
 
-//Q2: Does Yang make a living as a dog walker?
-var isDogWalker = userInput('Does Yang make a living as a dog walker?');
-var secondResult = 'correct';
+  var elAnswer = document.getElementById(htmlAnswerId[i]);
+  elAnswer.textContent = userAnswerList[i];
 
-if (isDogWalker === 'yes' || isDogWalker === 'y'){
-  alert('You guess wrong! She is actually a tax analyst dealing with numbers.');
-  secondResult = 'wrong';
-}
-else{
-  alert('You are right! She loves dogs but is not a professional dog walker.');
-}
-
-console.log('For the question: "Does Yang make a living as a dog walker?" => User answer is ' + isDogWalker + '.');
-
-var elSecondAnswer = document.getElementById('answer2');
-elSecondAnswer.textContent = isDogWalker;
-
-var elSecondResult = document.getElementById('result2');
-elSecondResult.textContent = secondResult;
-
-
-
-
-//Q3: Does Yang have a dgree in Information Systems?
-var degreeInfoSys = userInput('Does Yang have a dgree in Information Systems?');
-var thirdResult = 'correct';
-
-if (degreeInfoSys === 'yes'|| degreeInfoSys === 'y'){
-  alert('Yup. She got a degree in Information Systems about 7 years ago.');
-}
-else{
-  alert('Wrong answer! Yang is smarter than you think :)');
-  thirdResult ='wrong';
+  var elResult = document.getElementById(htmlResultId[i]);
+  elResult.textContent = resultList[i];
 }
 
-console.log('For the question: "Does Yang have a dgree in Information Systems?" => User answer is ' + degreeInfoSys + '.');
-
-var elThirdAnswer = document.getElementById('answer3');
-elThirdAnswer.textContent = degreeInfoSys;
-
-var elThirdResult = document.getElementById('result3');
-elThirdResult.textContent = thirdResult;
 
 
+///for Question 6 - Guess what my lucky number is from 1 to 10. You have 4 opportunities to guess:
 
+userAnswerList[5] = prompt(questionList[5]);
+resultList[5] ='wrong';
 
+//give user 4 opportunies to guess the correct number
 
-//Q4: Does Yang like Visual Basics?
-var likesVisualBasics = userInput('Does Yang like Visual Basics?');
-var fourthResult = 'correct';
+for (var j = 0; j < 4; j++){
+// check the validation of the answer for question 6 (must be a number)
+  var number = parseInt(userAnswerList[5]); //input answer is always string, should translate to a number
 
-if (likesVisualBasics === 'yes'|| likesVisualBasics === 'y'){
-  alert('You guess wrong. She does not like VB becuase the language is too old!');
-  fourthResult ='wrong';
-}
-else{
-  alert('You are right! She is not a VB fan and likes JavaScirpt better!');
-}
+  while (isNaN(number)){
+    number = prompt('Not a number. Please type in a number.');
+  }
 
-console.log('For the question: "Does Yang like Visual Basics?" => User answer is ' + likesVisualBasics + '.');
-
-var elFourthAnswer = document.getElementById('answer4');
-elFourthAnswer.textContent = likesVisualBasics;
-
-var elFourthResult = document.getElementById('result4');
-elFourthResult.textContent = fourthResult;
-
-
-
-
-
-//Q5: Does Yang want to be a software engineer?
-var beSoftwareEngineer = userInput('Does Yang want to be a software engineer?');
-var fifthResult = 'correct';
-
-if (beSoftwareEngineer === 'yes'|| beSoftwareEngineer === 'y'){
-  alert('Of course! Software Engineer is an awesome job!');
-}
-else{
-  alert('Wrong! She wants to be a software engineer and is working on that:)');
-  fifthResult = 'wrong';
+  //if last question and still not get correct
+  if(j ===3 && number !== correctAnswerList[5]){
+    alert('Time out! You did not get it correct.');
+  }
+  //if get it correct
+  else if (number === correctAnswerList[5]){
+    alert(alertCorrectList[5]);
+    resultList[5]='correct';
+    break;
+  }
+  //if not last quesiton and user number is too low
+  else if (number < correctAnswerList[5]){
+    userAnswerList[5] = prompt(alertWrongList[5] + ' Too low. Guess higher.');
+  }
+  //if not last question and user number is too high
+  else {
+    userAnswerList[5] = prompt(alertWrongList[5] + ' Too high. Guess lower.');
+  }
 }
 
-console.log('For the question: "Does Yang want to be a software engineer?" => User answer is ' + beSoftwareEngineer + '.');
+alert('Did you get it correct? My lucky number is ' + correctAnswerList[5] +'.');
 
-var elFifthAnswer = document.getElementById('answer5');
-elFifthAnswer.textContent = beSoftwareEngineer;
+console.log('For the question: ' + questionList[5] + ' => User answer is ' + userAnswerList[5] + '.');
 
-var elFifthResult = document.getElementById('result5');
-elFifthResult.textContent = fifthResult;
+var elSixAnswer = document.getElementById(htmlAnswerId[5]);
+elSixAnswer.textContent = userAnswerList[5];
+
+var elSixResult = document.getElementById(htmlResultId[5]);
+elSixResult.textContent = resultList[5];
+
+
+///for Question 7 - Can you guess a country I visited except for US? You have 6 opportunies to guess.
+
+resultList[6] = 'wrong';
+userAnswerList[6] = prompt(questionList[6]);
+
+//give user 6 opportunies to guess the correct number
+for(var k = 0; k < 6; k++){
+
+  //if last quesiton and still did not get correct:
+  if (k===5 && correctAnswerList[6].includes(userAnswerList[6].toLowerCase())=== false){
+    alert('Time out! You did not get it correct :(');
+  }
+  //if user answer one correct answer:
+  else if (correctAnswerList[6].includes(userAnswerList[6].toLowerCase())=== true){
+    alert(alertCorrectList[6]);
+    resultList[6] = 'correct';
+    break;
+  }
+  //if not last question and user get it wrong:
+  else{
+    userAnswerList[6] = prompt(alertWrongList[6]);
+  }
+}
+alert('I have been to Japan, China, and Canada so far.');
+
+console.log('For the question: ' + questionList[6] + ' => User answer is ' + userAnswerList[6] + '.');
+
+var elSevenAnswer = document.getElementById(htmlAnswerId[6]);
+elSevenAnswer.textContent = userAnswerList[6];
+
+var elSevenResult = document.getElementById(htmlResultId[6]);
+elSevenResult.textContent = resultList[6];
+
+///Count total correct answers
+
+var countCorrect =0;
+for (var m = 0; m <resultList.length; m++){
+  if (resultList[m] === 'correct'){
+    countCorrect++;
+  }
+}
+
+console.log('result list is:');
+console.log(resultList);
+console.log('Test Result: ' + countCorrect + ' correct answers out of ' + resultList.length);
+
+alert('You got ' + countCorrect + ' out of 7 questions correct!');
+
+var elcountCorrect = document.getElementById('count');
+elcountCorrect.textContent = countCorrect;
