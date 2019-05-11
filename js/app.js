@@ -20,6 +20,7 @@ function userInput(question){
   }
   return answer.toLowerCase();
 }
+
 //Define a function called 'connectHtml' to update contents in HTML
 function connectHtml(htmlId, jsVar){
   var el = document.getElementById(htmlId);
@@ -43,33 +44,28 @@ var resultList =new Array(7);
 var htmlAnswerId =['answer1','answer2','answer3','answer4','answer5','answer6','answer7'];
 var htmlResultId =['result1','result2','result3','result4','result5','result6','result7'];
 
-///for Question 1 to Question 5:
-
-for (var i = 0; i<5; i++){
-
-  userAnswerList[i] = userInput(questionList[i]);
-
-  if (userAnswerList[i] === correctAnswerList[i]){
-    alert(alertCorrectList[i]);
-    resultList[i] = 'correct';
+///for Question 1 to Question 5
+//Define a function to deal with questions 1 to 5
+function fiveQuestions (question, userAnswer, correctAnswer, correctMessage, wrongMessage, result, htmlAnswerId, htmlResultId) {
+  userAnswer = userInput (question);
+  if (userAnswer === correctAnswer) {
+    alert(correctMessage);
+    result = 'correct';
+  } else {
+    alert (wrongMessage);
+    result = 'wrong';
   }
-  else{
-    alert(alertWrongList[i]);
-    resultList [i] = 'wrong';
-  }
+  console.log('For the question: ' + question + ' => User answer is ' + userAnswer + '.');
 
-  console.log('For the question: ' + questionList[i] + ' => User answer is ' + userAnswerList[i] + '.');
-
-  connectHtml(htmlAnswerId[i], userAnswerList[i]);
-  connectHtml(htmlResultId[i], resultList[i]);
-  // var elAnswer = document.getElementById(htmlAnswerId[i]);
-  // elAnswer.textContent = userAnswerList[i];
-
-  // var elResult = document.getElementById(htmlResultId[i]);
-  // elResult.textContent = resultList[i];
+  connectHtml(htmlAnswerId, userAnswer);
+  connectHtml(htmlResultId, result);
 }
+//Using a loop to call the function 'fiveQuestion'
+for (var i = 0; i < 5; i++){
 
+  fiveQuestions (questionList[i], userAnswerList[i], correctAnswerList[i], alertCorrectList[i], alertWrongList[i], resultList[i], htmlAnswerId[i], htmlResultId[i]); 
 
+}
 
 ///for Question 6 - Guess what my lucky number is from 1 to 10. You have 4 opportunities to guess:
 
@@ -113,12 +109,6 @@ console.log('For the question: ' + questionList[5] + ' => User answer is ' + use
 connectHtml(htmlAnswerId[5], userAnswerList[5]);
 connectHtml(htmlResultId[5], resultList[5]);
 
-// var elSixAnswer = document.getElementById(htmlAnswerId[5]);
-// elSixAnswer.textContent = userAnswerList[5];
-
-// var elSixResult = document.getElementById(htmlResultId[5]);
-// elSixResult.textContent = resultList[5];
-
 
 ///for Question 7 - Can you guess a country I visited except for US? You have 6 opportunies to guess.
 
@@ -150,11 +140,6 @@ console.log('For the question: ' + questionList[6] + ' => User answer is ' + use
 connectHtml(htmlAnswerId[6], userAnswerList[6]);
 connectHtml(htmlResultId[6], resultList[6]);
 
-// var elSevenAnswer = document.getElementById(htmlAnswerId[6]);
-// elSevenAnswer.textContent = userAnswerList[6];
-
-// var elSevenResult = document.getElementById(htmlResultId[6]);
-// elSevenResult.textContent = resultList[6];
 
 ///Count total correct answers
 
@@ -174,5 +159,4 @@ alert('You got ' + countCorrect + ' out of 7 questions correct!');
 connectHtml('count', countCorrect);
 
 
-// var elcountCorrect = document.getElementById('count');
-// elcountCorrect.textContent = countCorrect;
+
