@@ -47,6 +47,7 @@ var htmlResultId =['result1','result2','result3','result4','result5','result6','
 ///for Question 1 to Question 5
 //Define a function to deal with questions 1 to 5
 function fiveQuestions (question, userAnswer, correctAnswer, correctMessage, wrongMessage, result, htmlAnswerId, htmlResultId) {
+
   userAnswer = userInput (question);
   if (userAnswer === correctAnswer) {
     alert(correctMessage);
@@ -55,15 +56,20 @@ function fiveQuestions (question, userAnswer, correctAnswer, correctMessage, wro
     alert (wrongMessage);
     result = 'wrong';
   }
+
   console.log('For the question: ' + question + ' => User answer is ' + userAnswer + '.');
 
   connectHtml(htmlAnswerId, userAnswer);
   connectHtml(htmlResultId, result);
+
+  return result;
 }
+
+
 //Using a loop to call the function 'fiveQuestion'
 for (var i = 0; i < 5; i++){
 
-  fiveQuestions (questionList[i], userAnswerList[i], correctAnswerList[i], alertCorrectList[i], alertWrongList[i], resultList[i], htmlAnswerId[i], htmlResultId[i]); 
+  resultList[i] = fiveQuestions (questionList[i], userAnswerList[i], correctAnswerList[i], alertCorrectList[i], alertWrongList[i], resultList[i], htmlAnswerId[i], htmlResultId[i]);
 
 }
 
