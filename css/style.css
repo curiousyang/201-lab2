@@ -1,48 +1,50 @@
 * {
    
     text-align: left;
-    font-size: 15px;
+    font-size: 20px;
+   /* background: #FFA691; */
 }
 
 
 h1{
     font-size:3em;
-    color:rgba(255, 0, 55, 0.5);
-    text-align: center;
-    font-family: 'Modak', cursive;
+    color:#FAEBEA;
+    font-family: 'Monoton', cursive;
+    text-align:center;
+  
 
 }
+
 h2{
     font-size:2em;
-    color:black;
+    color:#FAEBEA;
     text-align: center;
-    font-family: 'Sofia', cursive;
+    font-family:'Indie Flower', cursive;
 
 }
 h3{
     font-size: 1.5em;
-    color:rgba(23, 94, 9, 0.897);
-    font-family: 'Righteous', cursive;
+    color:#758F7E;
+    font-family: 'Josefin Slab', serif;
 
 }
 
 
 .question{
     font-family: 'Indie Flower', cursive;
-    background-color:rgb(207,228,221);
-    color:rgb(39,22,22);
+    color:#FAEBEA;
    
 }
 
 .answer{
-    font-family: 'Play', sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
     padding: 1em;
-    color:black;
+    color: #056A58;
    
 }
 section{
     width: 100%;
-    border: 1em solid rgb(117, 170, 117);
+    border: 1em solid  #056A58;
     padding: 1em;
     margin: 1em;
     text-align: center;
@@ -50,12 +52,10 @@ section{
 
 #total{
   
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nanum Pen Script', cursive;
     font-size:1.5em;
     text-align: right;
-    color:rgba(255, 0, 55, 0.5);
-
-   
+    color:red;
 }
 
 #left{
@@ -74,25 +74,27 @@ section{
 }
 
 #more{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Indie Flower', cursive;
     padding: 1em;
+    color:#FAEBEA;
 }
 
 #user{
   
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-   
-    
+    font-family: 'Shadows Into Light Two', cursive;
+    color:#FAEBEA;
+
 }
 
 #vacation{
     font-size:1.2em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #056A58;
 
 }
 
 ol{
-    font-family: 'Modak', cursive;
+    font-family: 'Shadows Into Light Two', cursive;
     padding: 1em;
     list-style-type: decimal;
 }
